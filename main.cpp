@@ -1,38 +1,25 @@
-/*
-+-------------------------------------------------+
-|Disciplina: IntroduÁ„o a ComputaÁ„o Gr·fica      |
-|Aluno: Rodrigo da Silva Costa                    |
-|Turma: Manha                                     |
-|Titulo trabalho: Lista 2                         | 
-|Comandos:                                        |
-|W ou w -> Mover submarino para cima              |
-|S ou s -> Mover submarino para baixo             |
-|A ou a -> Mover submarino para esquerda          |
-|D ou d -> Mover submarino pra direita            |
-|ENTER -> Mover submarino para o centro           |                                      |
-+ ------------------------------------------------+
-*/
+
 
 #include <stdlib.h>
 #include <GL/glut.h>
 #include<math.h>
 #define pi 3.14 //define  pi
 
-// Vari·veis que guardam a translaÁ„o que ser· aplicada 
+// Vari√°veis que guardam a transla√ß√£o que ser√° aplicada 
 // sobre o peixe
 GLfloat Tx,Txx;
 GLfloat Ty,Tyy;
-// Vari·veis que guardam os valores mÌnimos de x 
+// Vari√°veis que guardam os valores m√≠nimos de x 
 GLfloat minX,minXX, maxX,maxXX;
 GLfloat rota,rota2,rotay;
-// Vari·veis que guardam o tamanho do incremento nas 
-// direÁıes x  (n˙mero de pixels para se mover a 
+// Vari√°veis que guardam o tamanho do incremento nas 
+// dire√ß√µes x  (n√∫mero de pixels para se mover a 
 // cada intervalo de tempo)
 GLfloat xStep;
-// Vari·veis que guardam a largura e altura da janela
+// Vari√°veis que guardam a largura e altura da janela
 GLfloat windowXmin, windowXmax;
 
-// FunÁ„o callback de redesenho da janela de visualizaÁ„o
+// Fun√ß√£o callback de redesenho da janela de visualiza√ß√£o
 void DesenharPeixe(void)
 {
       //Triangulo maior (Corpo do peixe)
@@ -97,7 +84,7 @@ void DesenharPeixe(void)
               for(int i = 0; i <= angulo; i++) { 
                       teta = (i*pi)/180; 
                       glVertex2f(x + (cos(teta) * raio),
-                      y +(sin(teta) * raio)); //seta os pontos que ser„o 
+                      y +(sin(teta) * raio)); //seta os pontos que ser√£o 
                                               // conectados em cada eixo formando 
                                               // assim o circulo 
              }
@@ -139,7 +126,7 @@ void DesenharJanelaSubmarino()
               for(int i = 0; i <= angulo; i++) { 
                       teta = (i*pi)/180; 
                       glVertex2f(x + (cos(teta) * raio),
-                      y +(sin(teta) * raio)); //seta os pontos que ser„o 
+                      y +(sin(teta) * raio)); //seta os pontos que ser√£o 
                                               // conectados em cada eixo formando 
                                               // assim o circulo 
              }
@@ -155,7 +142,7 @@ void DesenharJanelaSubmarino()
               for(int i = 0; i <= angulo; i++) { 
                       teta = (i*pi)/180; 
                       glVertex2f(x + (cos(teta) * raio),
-                      y +(sin(teta) * raio)); //seta os pontos que ser„o 
+                      y +(sin(teta) * raio)); //seta os pontos que ser√£o 
                                               // conectados em cada eixo formando 
                                               // assim o circulo 
              }
@@ -375,12 +362,12 @@ void DesenharFolha()
 }
 void exibirPeixes()
 {
-     // Inicializa a matriz de transformaÁ„o corrente
+     // Inicializa a matriz de transforma√ß√£o corrente
 	glLoadIdentity();
 	
-     // Aplica uma translaÁ„o sobre o peixe
+     // Aplica uma transla√ß√£o sobre o peixe
 	glTranslatef(Tx, Ty, 0.0f);
-	// Aplica rotaÁ„o no Peixe
+	// Aplica rota√ß√£o no Peixe
 	glRotatef(rota, 0.0f, 0.0f, 1.0f); 
 	// Desenha o Peixe
 	DesenharPeixe();
@@ -413,7 +400,7 @@ void exibirPeixes()
 	glRotatef(rota, 0.0f, 0.0f, 1.0f); 
 	DesenharPeixe();
 	
-	// Muda a direÁ„o do peixe quando atinge a borda
+	// Muda a dire√ß√£o do peixe quando atinge a borda
 	 if( (Tx+maxX) > windowXmax || (Tx+minX) < windowXmin ){ 
 		rota += 180;                                          
 		                                                     
@@ -504,8 +491,8 @@ void Display(void)
      
 	// Muda para o sistema de coordenadas do modelo
 	glMatrixMode(GL_MODELVIEW);
-	// Inicializa a matriz de transformaÁ„o corrente Limpa a janela de
-    // visualizaÁ„o com a cor de fundo definida previamente
+	// Inicializa a matriz de transforma√ß√£o corrente Limpa a janela de
+    // visualiza√ß√£o com a cor de fundo definida previamente
 	glClear(GL_COLOR_BUFFER_BIT);
 	
     exibirAreia();
@@ -522,7 +509,7 @@ void Display(void)
 }
 
 
-// FunÁ„o callback chamada quando o tamanho da janela È alterado 
+// Fun√ß√£o callback chamada quando o tamanho da janela √© alterado 
 void AlteraTamanhoJanela(GLsizei w, GLsizei h)
 {
 	GLsizei largura, altura;
@@ -530,19 +517,19 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h)
 	// Evita a divisao por zero
 	if(h == 0) h = 1;
 
-	// Atualiza as vari·veis
+	// Atualiza as vari√°veis
 	largura = w;
 	altura = h;
 
-	// Especifica as dimensıes da Viewport
+	// Especifica as dimens√µes da Viewport
 	glViewport(0, 0, largura, altura);
 
-	// Inicializa o sistema de coordenadas de projeÁ„o
+	// Inicializa o sistema de coordenadas de proje√ß√£o
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	// Estabelece a janela de seleÁ„o (esquerda, direita, inferior, 
-	// superior) mantendo a proporÁ„o com a janela de visualizaÁ„o
+	// Estabelece a janela de sele√ß√£o (esquerda, direita, inferior, 
+	// superior) mantendo a propor√ß√£o com a janela de visualiza√ß√£o
 	if (largura <= altura) 
 	{
 		gluOrtho2D (-40.0f, 40.0f, -40.0f*altura/largura, 40.0f*altura/largura);
@@ -559,23 +546,23 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h)
 	}
 }
 
-// FunÁ„o callback chamada pela GLUT a cada intervalo de tempo
+// Fun√ß√£o callback chamada pela GLUT a cada intervalo de tempo
 void Anima(int value)
 {
-	// Muda a direÁ„o quando chega na borda esquerda ou direita
+	// Muda a dire√ß√£o quando chega na borda esquerda ou direita
 	if( (Tx+maxX) > windowXmax || (Tx+minX) < windowXmin )
 		xStep = -xStep;
 
 	// Move o peixe no eixo X
 	Tx += xStep;
 
-	// Redesenha o peixe em outra posiÁ„o
+	// Redesenha o peixe em outra posi√ß√£o
 	glutPostRedisplay();
 	glutTimerFunc(150,Anima, 1);
 }
 
 
-// FunÁ„o callback chamada para gerenciar eventos de teclas
+// Fun√ß√£o callback chamada para gerenciar eventos de teclas
 void Teclado (unsigned char key, int x, int y)
 {
      
@@ -618,13 +605,13 @@ void Teclado (unsigned char key, int x, int y)
      }
 }
 
-// FunÁ„o respons·vel por inicializar par‚metros e vari·veis
+// Fun√ß√£o respons√°vel por inicializar par√¢metros e vari√°veis
 void Inicializa (void)
 {   
-	// Define a cor de fundo da janela de visualizaÁ„o
+	// Define a cor de fundo da janela de visualiza√ß√£o
 	glClearColor(0.13f, 0.70f, 0.67f, 1.0f );
 
-	// InicializaÁ„o das vari·veis globais
+	// Inicializa√ß√£o das vari√°veis globais
 	rota = 180.0f;
 	rota2 = 0.0f;
 	xStep = 1.0f;
@@ -639,35 +626,35 @@ void Inicializa (void)
 // Programa Principal 
 int main(void)
 {
-	// Define do modo de operaÁ„o da GLUT
+	// Define do modo de opera√ß√£o da GLUT
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB); 
 
-	// Especifica a posiÁ„o inicial da janela GLUT
+	// Especifica a posi√ß√£o inicial da janela GLUT
 	glutInitWindowPosition(0,0); 
 
 	// Especifica o tamanho inicial em pixels da janela GLUT
 	glutInitWindowSize(1366,768 ); 
 
-	// Cria a janela passando como argumento o tÌtulo da mesma
+	// Cria a janela passando como argumento o t√≠tulo da mesma
 	glutCreateWindow("Aquario 2D Animado");
 
-	// Registra a funÁ„o callback de redesenho da janela de visualizaÁ„o
+	// Registra a fun√ß√£o callback de redesenho da janela de visualiza√ß√£o
 	glutDisplayFunc(Display);
 
-	// Registra a funÁ„o callback de redimensionamento da janela de visualizaÁ„o
+	// Registra a fun√ß√£o callback de redimensionamento da janela de visualiza√ß√£o
 	glutReshapeFunc(AlteraTamanhoJanela);
 
-	// Registra a funÁ„o callback para tratamento das teclas ASCII
+	// Registra a fun√ß√£o callback para tratamento das teclas ASCII
 	glutKeyboardFunc (Teclado);
 
-	// Registra a funÁ„o callback que ser· chamada a cada intervalo de tempo
+	// Registra a fun√ß√£o callback que ser√° chamada a cada intervalo de tempo
 	glutTimerFunc(150, Anima, 1);
 	//glutTimerFunc(150, Anima2, 1);
 
-	// Chama a funÁ„o respons·vel por fazer as inicializaÁıes 
+	// Chama a fun√ß√£o respons√°vel por fazer as inicializa√ß√µes 
 	Inicializa();
 
-	// Inicia o processamento e aguarda interaÁıes do usu·rio
+	// Inicia o processamento e aguarda intera√ß√µes do usu√°rio
 	glutMainLoop();
 
 	return 0;
